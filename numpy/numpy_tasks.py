@@ -25,10 +25,10 @@ def zeros_array_with_border(n):
 
 def chess_board(n):
     """5. Создаёт массив n x n с шахматной доской из нулей и единиц"""
-    base = np.array([[0, 1], [1, 0]])
-    num_tiles = (n + 1) // 2
-    tiled = np.tile(base, (num_tiles, num_tiles))  
-    return tiled[:n, :n]  
+   board = np.zeros((n, n))
+    board[1::2, ::2] = 1
+    board[::2, 1::2] = 1
+    return board
 
 def matrix_with_sum_index(n):
     """6. Создаёт 𝑛 × 𝑛  матрицу с (𝑖,𝑗)-элементами равным 𝑖+𝑗."""
@@ -47,10 +47,10 @@ def cos_sin_as_two_rows(a, b, dx):
 
 def compute_mean_rowssum_columnssum(A):
     """8. Для numpy массива A вычисляет среднее всех элементов, сумму строк и сумму столбцов."""
-    mean = np.mean(A)
-    rows_sum = np.sum(A, axis=1)
-    columns_sum = np.sum(A, axis=0)
-    return mean, rows_sum, columns_sum
+   mean = np.mean(A)
+    row_sums = np.sum(A, axis=1)
+    col_sums = np.sum(A, axis=0)
+    return mean, row_sums, col_sums
 
 def sort_array_by_column(A, j):
     """ 9. Сортирует строки numpy массива A по j-му столбцу в порядке возрастания."""
