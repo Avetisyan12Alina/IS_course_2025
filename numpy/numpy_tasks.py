@@ -23,12 +23,12 @@ def zeros_array_with_border(n):
     a[:, -1] = 1
     return a
 
-#def chess_board(n):
- #   """5. Создаёт массив n x n с шахматной доской из нулей и единиц"""
-  # board = np.zeros((n, n))
-   # board[::2, ::2] = 1
-    # board[1::2, 1::2] = 1
-    #return board
+def chess_board(n):
+    """5. Создаёт массив n x n с шахматной доской из нулей и единиц"""
+   board = np.zeros((n, n))
+    board[::2, ::2] = 1
+    board[1::2, 1::2] = 1
+    return board
 
 def matrix_with_sum_index(n):
     """6. Создаёт 𝑛 × 𝑛  матрицу с (𝑖,𝑗)-элементами равным 𝑖+𝑗."""
@@ -45,9 +45,9 @@ def cos_sin_as_two_rows(a, b, dx):
     sin_x = np.sin(x)
     return np.vstack((cos_x, sin_x))
 
-#def compute_mean_rowssum_columnssum(A):
-   # """8. Для numpy массива A вычисляет среднее всех элементов, сумму строк и сумму столбцов."""
-   #return np.mean(A), np.sum(A, axis=0), np.sum(A, axis=1)
+def compute_mean_rowssum_columnssum(A):
+    """8. Для numpy массива A вычисляет среднее всех элементов, сумму строк и сумму столбцов."""
+   return np.mean(A), np.sum(A, axis=0), np.sum(A, axis=1)
 
 def sort_array_by_column(A, j):
     """ 9. Сортирует строки numpy массива A по j-му столбцу в порядке возрастания."""
@@ -59,15 +59,11 @@ def compute_integral(a, b, f, dx, method):
     method == 'trapezoidal' - методом трапеций   
     method == 'simpson' - методом Симпсона  
     """
-    x = np.arange(a, b, dx)
-    if method == 'rectangular':
-       return np.sum(f(x) * dx)
-    elif method == 'trapezoidal':
-       return (dx/2) * (f(a) + 2*np.sum(f(x[1:])) + f(b-dx))
-    elif method == 'simpson':
-        n = len(x)
-        if n % 2 == 0:
-            x = x[:-1] 
-            n = len(x)
-        h = (b - a) / (n - 1) # 
-        return (h/3) * (f(a) + 4*np.sum(f(x[1::2])) + 2*np.sum(f(x[2:-1:2])) + f(b-dx))
+   match method:
+        case 'rectangular':
+            return np.sum(f(np.arange(a, b, dx))) * dx
+        case 'trapezoidal':
+            return np.sum((f(np.arange(a, b, dx)) + f(np.arange(a + dx, b + dx/2, dx))) * dx / 2)
+        case 'simpson':
+            return np.sum((f(np.arange(a, b, dx))
+                           + 4*f(np.arange(a + dx/2, b + dx/2, dx)) + f(np.arange(a + dx, b + dx/2, dx))) * dx / 6)
