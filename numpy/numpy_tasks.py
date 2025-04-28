@@ -26,8 +26,8 @@ def zeros_array_with_border(n):
 def chess_board(n):
     """5. Создаёт массив n x n с шахматной доской из нулей и единиц"""
    board = np.zeros((n, n))
-    board[1::2, ::2] = 1
-    board[::2, 1::2] = 1
+    board[::2, ::2] = 1
+    board[1::2, 1::2] = 1
     return board
 
 def matrix_with_sum_index(n):
@@ -47,10 +47,7 @@ def cos_sin_as_two_rows(a, b, dx):
 
 def compute_mean_rowssum_columnssum(A):
     """8. Для numpy массива A вычисляет среднее всех элементов, сумму строк и сумму столбцов."""
-   mean = np.mean(A)
-    row_sums = np.sum(A, axis=1)
-    col_sums = np.sum(A, axis=0)
-    return mean, row_sums, col_sums
+   return np.mean(A), np.sum(A, axis=0), np.sum(A, axis=1)
 
 def sort_array_by_column(A, j):
     """ 9. Сортирует строки numpy массива A по j-му столбцу в порядке возрастания."""
