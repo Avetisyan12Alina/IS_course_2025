@@ -47,6 +47,7 @@ def cos_sin_as_two_rows(a, b, dx):
 
 def compute_mean_rowssum_columnssum(A):
     """8. Для numpy массива A вычисляет среднее всех элементов, сумму строк и сумму столбцов."""
+    mean, rows_sum, columns_sum = compute_mean_rowssum_columnssum(A)
    return np.mean(A), np.sum(A, axis=0), np.sum(A, axis=1)
 
 def sort_array_by_column(A, j):
