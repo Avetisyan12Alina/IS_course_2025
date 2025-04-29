@@ -24,7 +24,7 @@ def zeros_array_with_border(n):
     return a
 
 def chess_board(n):
-   """5. Создаёт массив n x n с шахматной доской из нулей и единиц"""
+    """5. Создаёт массив n x n с шахматной доской из нулей и единиц"""
     board = np.zeros((n, n))
     board[::2, ::2] = 1
     board[1::2, 1::2] = 1
