@@ -1,7 +1,7 @@
 import numpy as np
 
 def uniform_intervals(a, b, n):
-    """1. создает numpy массив - равномерное разбиение интервала от a до b на n отрезков."""
+    """1. Создает numpy массив - равномерное разбиение интервала от a до b на n отрезков."""
     return np.linspace(a, b, n)
 
 def cyclic123_array(n): 
