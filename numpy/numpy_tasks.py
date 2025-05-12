@@ -33,8 +33,6 @@ def matrix_with_sum_index(n):
     """6. Создаёт 𝑛 × 𝑛  матрицу с (𝑖,𝑗)-элементами равным 𝑖+𝑗."""
     i, j = np.indices((n, n))
     return i + j
-    i, j = np.indices((n, n))
-    return i + j
 
 def cos_sin_as_two_rows(a, b, dx):
     """7. Вычислите $cos(x)$ и $sin(x)$ на интервале [a, b) с шагом dx, 
